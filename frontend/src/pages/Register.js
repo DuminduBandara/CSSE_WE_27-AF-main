@@ -146,7 +146,7 @@ const Register = () => {
                 </button>
                 <p class="small fw-bold mt-2 pt-1 mb-0">
                   Already have an account?{" "}
-                  <a href="#!" class="link-danger">
+                  <a href="/login" class="link-danger">
                     Login
                   </a>
                 </p>

@@ -1,16 +1,16 @@
-import React from "react";
-import Col from "react-bootstrap/Col";
-import Nav from "react-bootstrap/Nav";
-import Row from "react-bootstrap/Row";
-import Tab from "react-bootstrap/Tab";
-import Inquaries from "../../components/Admin/Inquaries.jsx";
-import Packages from "../../components/Admin/Packages.jsx";
-import Requests from "../../components/Admin/Requests.jsx";
-import Vouchers from "../../components/Admin/Vouchers.jsx";
-import Places from "../../components/Admin/Places.jsx";
-import Donations from "../../components/Admin/Donations.jsx";
-import Footer from "../../components/Home/footer.jsx";
-import "./travel-style.css";
+import React from 'react';
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import Row from 'react-bootstrap/Row';
+import Tab from 'react-bootstrap/Tab';
+import Inquaries from '../../components/Admin/Inquaries.jsx';
+import Packages from '../../components/Admin/Packages.jsx';
+import Requests from '../../components/Admin/Requests.jsx';
+import Vouchers from '../../components/Admin/Vouchers.jsx';
+import Places from '../../components/Admin/Places.jsx';
+import Donations from '../../components/Admin/Donations.jsx';
+import Footer from '../../components/Home/footer.jsx';
+import './travel-style.css';
 
 export default function TravelPlan() {
   return (
@@ -31,9 +31,9 @@ export default function TravelPlan() {
                     className="nav-link"
                     eventKey="first"
                     style={{
-                      fontWeight: "100",
-                      fontFamily: "Lucida Sans",
-                      fontSize: "15px",
+                      fontWeight: '100',
+                      fontFamily: 'Lucida Sans',
+                      fontSize: '15px',
                     }}
                   >
                     Requests
@@ -44,9 +44,9 @@ export default function TravelPlan() {
                     className="nav-link"
                     eventKey="second"
                     style={{
-                      fontWeight: "100",
-                      fontFamily: "Lucida Sans",
-                      fontSize: "15px",
+                      fontWeight: '100',
+                      fontFamily: 'Lucida Sans',
+                      fontSize: '15px',
                     }}
                   >
                     Packages
@@ -57,15 +57,15 @@ export default function TravelPlan() {
                     className="nav-link"
                     eventKey="third"
                     style={{
-                      fontWeight: "100",
-                      fontFamily: "Lucida Sans",
-                      fontSize: "15px",
+                      fontWeight: '100',
+                      fontFamily: 'Lucida Sans',
+                      fontSize: '15px',
                     }}
                   >
                     Inquiries
                   </Nav.Link>
                 </Nav.Item>
-                <Nav.Item>
+                {/* <Nav.Item>
                   <Nav.Link
                     className="nav-link"
                     eventKey="fourth"
@@ -77,22 +77,22 @@ export default function TravelPlan() {
                   >
                     Vouchers
                   </Nav.Link>
-                </Nav.Item>
+                </Nav.Item> */}
                 <Nav.Item>
                   <Nav.Link
                     className="nav-link"
                     eventKey="fifth"
                     style={{
-                      fontWeight: "100",
-                      fontFamily: "Lucida Sans",
-                      fontSize: "15px",
+                      fontWeight: '100',
+                      fontFamily: 'Lucida Sans',
+                      fontSize: '15px',
                     }}
                   >
                     Places
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link
+                  {/* <Nav.Link
                     className="nav-link"
                     eventKey="sixth"
                     style={{
@@ -102,7 +102,7 @@ export default function TravelPlan() {
                     }}
                   >
                     Donations
-                  </Nav.Link>
+                  </Nav.Link> */}
                 </Nav.Item>
               </Nav>
             </Col>
@@ -111,9 +111,9 @@ export default function TravelPlan() {
                 <Tab.Pane
                   eventKey="first"
                   style={{
-                    fontWeight: "100",
-                    fontFamily: "Lucida Sans",
-                    fontSize: "15px",
+                    fontWeight: '100',
+                    fontFamily: 'Lucida Sans',
+                    fontSize: '15px',
                   }}
                 >
                   <Requests />
@@ -121,9 +121,9 @@ export default function TravelPlan() {
                 <Tab.Pane
                   eventKey="second"
                   style={{
-                    fontWeight: "100",
-                    fontFamily: "Lucida Sans",
-                    fontSize: "15px",
+                    fontWeight: '100',
+                    fontFamily: 'Lucida Sans',
+                    fontSize: '15px',
                   }}
                 >
                   <Packages />
@@ -131,9 +131,9 @@ export default function TravelPlan() {
                 <Tab.Pane
                   eventKey="third"
                   style={{
-                    fontWeight: "100",
-                    fontFamily: "Lucida Sans",
-                    fontSize: "15px",
+                    fontWeight: '100',
+                    fontFamily: 'Lucida Sans',
+                    fontSize: '15px',
                   }}
                 >
                   <Inquaries />
@@ -141,9 +141,9 @@ export default function TravelPlan() {
                 <Tab.Pane
                   eventKey="fourth"
                   style={{
-                    fontWeight: "100",
-                    fontFamily: "Lucida Sans",
-                    fontSize: "15px",
+                    fontWeight: '100',
+                    fontFamily: 'Lucida Sans',
+                    fontSize: '15px',
                   }}
                 >
                   <Vouchers />
@@ -151,9 +151,9 @@ export default function TravelPlan() {
                 <Tab.Pane
                   eventKey="fifth"
                   style={{
-                    fontWeight: "100",
-                    fontFamily: "Lucida Sans",
-                    fontSize: "15px",
+                    fontWeight: '100',
+                    fontFamily: 'Lucida Sans',
+                    fontSize: '15px',
                   }}
                 >
                   <Places />
@@ -161,9 +161,9 @@ export default function TravelPlan() {
                 <Tab.Pane
                   eventKey="sixth"
                   style={{
-                    fontWeight: "100",
-                    fontFamily: "Lucida Sans",
-                    fontSize: "15px",
+                    fontWeight: '100',
+                    fontFamily: 'Lucida Sans',
+                    fontSize: '15px',
                   }}
                 >
                   <Donations />

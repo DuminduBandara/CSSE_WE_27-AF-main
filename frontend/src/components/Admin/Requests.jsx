@@ -1,9 +1,9 @@
-import React from "react";
-import { Box, Button } from "@mui/material";
-import Header from "../Payment/Header";
-import axios from "axios";
-import {Component} from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Box, Button } from '@mui/material';
+import Header from '../Payment/Header';
+import axios from 'axios';
+import { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 const Requests = (props) => (
   <tr>
@@ -14,7 +14,7 @@ const Requests = (props) => (
     <td> {props.Requests.date}</td>
     <td> {props.Requests.days}</td>
     <td>
-      <Link to={"/packages/" + props.Requests._id}> CREATE </Link>
+      <Link to={'/packages/' + props.Requests._id}> CREATE </Link>
     </td>
   </tr>
 );
@@ -30,7 +30,7 @@ export default class Requests_Admin extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8080/requests/")
+      .get('http://localhost:8080/requests/')
       .then((response) => {
         this.setState({ Requests: response.data });
       })
@@ -41,7 +41,7 @@ export default class Requests_Admin extends Component {
 
   getPosts() {
     axios
-      .get("http://localhost:8080/requests/")
+      .get('http://localhost:8080/requests/')
       .then((response) => {
         this.setState({ Requests: response.data });
       })
@@ -65,7 +65,7 @@ export default class Requests_Admin extends Component {
   handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios.get("http://localhost:8080/requests/").then((response) => {
+    axios.get('http://localhost:8080/requests/').then((response) => {
       const resultt = response.data;
       const result = resultt.filter((props) =>
         props.userid.includes(searchKey)
@@ -112,13 +112,13 @@ export default class Requests_Admin extends Component {
                   <td>{props.date}</td>
                   <td className="tbody">{props.days}</td>
                   <td className="tbody">
-                    <Link to={"/packages/" + props._id}>
+                    <Link to={'/packages/' + props._id}>
                       <Button
                         variant="contained"
                         style={{
-                          fontSize: "0.9rem",
+                          fontSize: '0.9rem',
                           fontWeight: 500,
-                          fontFamily: "Lucida Sans",
+                          fontFamily: 'Lucida Sans',
                         }}
                       >
                         CREATE
