@@ -1,0 +1,31 @@
+.accordian_button{
+    float: right;
+}
+
+.centered_text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-size: 60px;
+    font-weight: 500;
+}
+
+.banner{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.blog_card{
+    margin-bottom: 5rem;
+}
+
+.blockquote-footer{
+    text-align: right;
+}
+
+.blog_message{
+    text-align: center;
+}

@@ -1,0 +1,29 @@
+.color_blog{
+    background-color: rgb(242, 246, 243);
+    width: 90%;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.accordiandiv{
+    margin: 3rem 20rem;
+    padding: 3rem 0 2rem 0;
+}
+
+.blog_heading {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #434840; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+ } 
+ 
+ .blog_heading .blog_text { 
+     background:rgb(242, 246, 243); 
+     padding:0 10px; 
+ }
+
+.blog_cards{
+    margin: 2rem 20rem;
+    padding: 2rem 0 3rem 0;
+}

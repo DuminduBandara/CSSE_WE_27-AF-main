@@ -1,0 +1,133 @@
+.navlogo{
+    margin-top: -8px;
+    width: 8rem;
+}
+
+/* Singe Page
+/* Set default font and box-sizing for all elements */
+* {
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+
+  /* Style the package details container */
+  .package-details {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  /* Style the package name */
+  .package-details h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+
+  /* Style the package description */
+  .package-details p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+
+  /* Style the package details list */
+  .package-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .package-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .package-info-item i {
+    margin-right: 10px;
+    color: #007bff;
+  }
+
+  .package-info-item p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  /* Style the package gallery */
+  .package-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .package-gallery img {
+    max-width: 30%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  /* Style the package booking form */
+  .package-booking h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+
+  .package-booking label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+  }
+
+  .package-booking input[type="text"],
+  .package-booking input[type="email"],
+  .package-booking input[type="tel"],
+  .package-booking textarea{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1rem;
+  }
+
+  .package-booking textarea {
+    height: 100px;
+  }
+
+  .package-booking button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .package-booking button[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+
+  select {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  

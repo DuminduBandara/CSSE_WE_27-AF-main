@@ -1,0 +1,15 @@
+.fromLabel {
+  font-size: 15px;
+  font-weight: 100;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.btn2 {
+  background: #043f56;
+  color: aliceblue;
+  outline: #043f56;
+  margin-top: 8px;
+  width: 150px;
+  height: 45px;
+  border-radius: 5px;
+}

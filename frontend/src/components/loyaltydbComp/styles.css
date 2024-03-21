@@ -1,0 +1,57 @@
+.loyalty_banner{
+   width: 100%;
+    
+}
+
+.cards_styles{
+    margin: 4rem 12rem;
+}
+
+.card_flex_loyalty{
+    display: flex;
+    margin: 4rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem;
+}
+
+.card_overflow{
+    overflow: auto;
+    height: 10rem;
+}
+
+.centered_text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-size: 60px;
+    font-weight: 500;
+}
+
+.banner{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.link_path_button{
+    text-decoration: none;
+    color: #fff;
+    padding: 0.5rem;
+}
+
+.link_path_button:hover{
+    color: #fff;
+}
+
+.redeem_toast{
+    position: fixed;
+    top: 2rem;
+    left: 3rem; 
+}
+
+.toast_header{
+    background-color: rgb(242, 246, 243);
+}

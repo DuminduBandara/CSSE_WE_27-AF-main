@@ -1,0 +1,65 @@
+.background {
+  background-image: url("../../images/bgpic.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 40vh;
+  background-position: center;
+  opacity: 0.9;
+}
+
+.heading h2{
+  font-size: 48px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  color: lightcyan;
+  padding-top: 120px;
+}
+
+.heading p{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  text-align: center;
+  color: lightcyan;
+  font-style: italic;
+}
+
+.side-nav-container{
+  padding-top: 20px;
+  padding-left: 30px;
+  width: 98%;
+}
+
+.tab-board {
+  padding: 2rem 1rem;
+  background-color: rgb(235, 239, 244);
+  border-radius: 10px;
+}
+
+.nav-item{
+  color: rgb(229, 238, 244);
+  font-size: 16px;
+  width: 180px;
+  font-weight: 500;
+}
+
+.nav-link {
+  color: rgb(19, 14, 107);
+}
+
+.nav-item :hover{
+  color: rgb(97, 92, 148);
+}
+
+.tab-content {
+  margin-left: -130px;
+}
+
+.flex-column {
+  background-color: rgb(247, 247, 251);
+  padding: 10px;
+  width: 200px;
+  height: 255px;
+  border-radius: 10px;
+}

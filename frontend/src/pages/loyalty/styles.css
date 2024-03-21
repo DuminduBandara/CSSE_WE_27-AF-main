@@ -1,0 +1,55 @@
+.reward_maindiv{
+  margin: 2rem 0;
+}
+
+.person_name {
+  padding: 2rem 0 0 4rem;
+}
+
+.rewardgif {
+  width: 10rem;
+  background-color: transparent;
+  margin-left: 45%;
+}
+
+.tab_div {
+  margin: 2rem 0;
+  padding: 0rem 5rem;
+}
+
+.instruct {
+  text-align: center;
+  margin: 5rem 0 10rem 0;
+}
+
+.rewardtext {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.color_div {
+  background-color: rgb(242, 246, 243);
+  width: 90%;
+  margin-left: 9rem;
+  border-radius: 20px;
+}
+
+.button_styles {
+  background: #043f56;
+  color: aliceblue;
+  outline: #043f56;
+  margin-top: 8px;
+  width: 150px;
+  height: 45px;
+  border-radius: 5px;
+}
+
+.button_styles:disabled {
+  background: #043f56;
+  color: aliceblue;
+  outline: #043f56;
+  margin-top: 8px;
+  width: 150px;
+  height: 45px;
+  border-radius: 5px;
+}

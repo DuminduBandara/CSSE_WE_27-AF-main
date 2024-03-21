@@ -1,0 +1,186 @@
+.admin_form_button_div{
+    text-align: right;
+}
+
+.admin_form_button{
+    padding: 0.5rem 2.8rem;
+}
+
+.places_form_button_div{
+  margin-left: 750px;
+}
+
+.places_form_button{
+    padding: 0.5rem 2rem;
+}
+
+.container {
+  margin-left: -10px;
+  margin-top: 20px;
+  width: 100%;
+  min-height: 60vh;
+  overflow-x: auto;
+}
+
+.container2 {
+  margin-left: 2px;
+  margin-top: 7px;
+  width: 100%;
+  min-height: 60vh;
+  overflow-x: auto;
+}
+
+.thead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tbody {
+  text-align: center;
+}
+
+.table .thead-light{
+  white-space: nowrap;
+  background-color: #529ebd;
+  min-height: 20vh;
+  color: #d9e3ec;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 16px;
+}
+
+.thead-light tr th:nth-child(1){
+  min-width: 200px;
+}
+
+.thead-light tr th:nth-child(2){
+  min-width: 200px;
+}
+
+.thead-light tr th:nth-child(3){
+  min-width: 150px;
+}
+
+.thead-light tr th:nth-child(4){
+  min-width: 180px;
+}
+
+.thead-light tr th:nth-child(5){
+  min-width: 50px;
+}
+
+.thead-light tr th:nth-child(6){
+  min-width: 50px;
+}
+
+.thead-light tr th:nth-child(7){
+  min-width: 50px;
+}
+
+.table tbody tr:hover{
+  background: #b4c6ce;
+}
+
+.package-form {
+  height: 500px;
+}
+
+/* == Vouchers == */
+
+.voucher_heading{
+  width: 100%; 
+  text-align: left; 
+  border-bottom: 1px solid #434840; 
+  line-height: 0.1em;
+  margin: 10px 0 20px; 
+}
+
+.voucher_heading .voucher_text{
+  background-color: rgb(235, 239, 244); 
+  padding:0 10px; 
+}
+
+.update__button{
+  padding: 0.5rem 1.5rem;
+}
+
+.flex_voucherButton{
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete__button{
+  padding: 0.5rem 1.5rem;
+  background: #ff5858;
+  border: 2px solid #ff5858;
+}
+
+.delete_voucher:hover{
+  background-color: #f93d3d;
+  border: 2px solid #ff5858;
+}
+
+/* == Donation == */
+
+.donation_heading{
+  width: 100%; 
+  text-align: left; 
+  border-bottom: 1px solid #434840; 
+  line-height: 0.1em;
+  margin: 10px 0 20px; 
+}
+
+.donation_heading .donation_text{
+  background-color: rgb(235, 239, 244); 
+  padding:0 10px; 
+}
+
+.vd_successmessage{
+  text-align: center;
+}
+
+/* Package Create */
+.package-create-main-form {
+  margin-top: -660px;
+  margin-left: 30px;
+  width: fit-content;
+}
+
+.package_form_button{
+  padding: 0.5rem 2.8rem;
+  background-color: #434840;
+  border: 3px solid #434840;
+  color: aliceblue;
+  border-radius: 5px;
+}
+
+.package_form_button_div{
+  margin-left: 1025px;
+}
+
+.background-pic{
+  background-image: url("../../images/adams-peak.jpg");
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-position: right;
+  width: 290px;
+  margin-left: 1229px;
+  margin-top: -32px;
+}
+
+.middle-form-div{
+  background-color: #91ae7e;
+  height: 130px;
+  width: 700px;
+  border-radius: 5px;
+  padding: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  margin-left: 475px;
+  margin-top: -105px;
+  font-weight: 600;
+}
+
+.col-lg-3{
+  margin-left: 3px;
+}
