@@ -123,7 +123,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/loyalty-reward" element={<LoyaltyDB />} />
-            <Route path="/travel-plan" element={<TravelPlan />} />
+            {/* <Route path="/travel-plan" element={<TravelPlan />} /> */}
             <Route path="/payment/:packageId" element={<Payment />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/profile" element={<MyProfile />} />
@@ -131,6 +131,16 @@ function App() {
             <Route path="/blogs" element={<Blog />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/inquiry" element={<Inquiry/>}/>
+
+            <Route
+              path="/travel-plan"
+              element={
+                <RoleProtected isAdmin={!isAdmin}>
+                  <TravelPlan />
+                </RoleProtected>
+              }
+            />
 
             <Route
               path="/user-inquiry"

@@ -22,9 +22,9 @@ const imageFilter = function (req, file, cb) {
 const upload = multer({ storage: storage, fileFilter: imageFilter });
 
 cloudinary.config({
-  cloud_name: "dg7kcjtlu",
-  api_key: "189726296272932",
-  api_secret: "dMrT32-k3AGZV_6ruShFRIhGdNM",
+  cloud_name: "dypvbk20u",
+  api_key: "233674869917517",
+  api_secret: "wsebfJ2GnsuwniQLrY1sHNKNdb0",
 });
 
 router.post("/upload", upload.single("image"), async (req, res) => {
