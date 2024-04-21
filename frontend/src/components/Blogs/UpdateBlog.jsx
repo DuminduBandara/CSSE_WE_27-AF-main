@@ -25,7 +25,6 @@ const UpdateBlog = ({ show, onHide, selectedBlog }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.put(
         `http://localhost:8080/blog/update/${selectedBlog._id}`,
