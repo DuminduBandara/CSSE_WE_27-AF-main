@@ -85,4 +85,51 @@ router.post('/decrease-points', async (req, res) => {
 });
 
 
+router.put('/update/:id', async (req, res) => {
+  try {
+    const { blogName, blogPlaces, bloggerName, blogContent } = req.body;
+
+    // Find the blog by ID and update it
+    const updatedBlog = await Blog.findByIdAndUpdate(
+      req.params.id,
+      {
+        blogName,
+        blogPlaces,
+        bloggerName,
+        blogContent,
+      },
+      { new: true }
+    );
+
+    if (!updatedBlog) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+
+    return res.json({ message: 'Blog updated successfully', updatedBlog });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+
+    if (!blog) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+
+    // Delete the blog
+    await blog.remove();
+
+    res.json({ message: 'Blog deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
 export default router;

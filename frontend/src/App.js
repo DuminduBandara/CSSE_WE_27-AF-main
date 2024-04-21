@@ -1,20 +1,20 @@
 import './App.css';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import LoyaltyDB from './pages/loyalty/loyaltydb'
+import LoyaltyDB from './pages/loyalty/loyaltydb';
 import TravelPlan from './pages/travel-plan/travel_plan';
 import MyProfile from './pages/package/MyProfile';
 import SinglePackage from './pages/package/SinglePackage';
 import Blog from './pages/blogs/blogmain';
 import Home from './pages/home';
-import Register from "./pages/Register";
-import Login from "./pages/Login";
+import Register from './pages/Register';
+import Login from './pages/Login';
 import Feedback from './pages/travelPlaces/feedback';
 import TravelPlace from './pages/travelPlaces/places';
 import NewPlaces from './pages/travelPlaces/newplaces';
 import Packages from './components/Admin/Create-Packages';
-import { Context } from "./Context";
-import Navbar from "./Navbar";
-import Payment from './pages/payment/payment'
+import { Context } from './Context';
+import Navbar from './Navbar';
+import Payment from './pages/payment/payment';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -22,21 +22,21 @@ import Inquiry from './pages/package/Inquiry';
 import UserInquiries from './pages/package/UserInquiries';
 import AdminInquiries from './pages/package/AdminInquiries';
 import RoleProtected from './pages/RoleProtected';
+import NotFound from './pages/404';
 
 function App() {
-
   const [status, setStatus] = useState(false);
-  const token = localStorage.getItem("rfkey");
+  const token = localStorage.getItem('rfkey');
   const [cartFoodLoading, setCartFoodLoading] = useState(true);
   const [cartFoodData, setCartFoodData] = useState([]);
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState('');
   const [data, setData] = useState([]);
-  const [cartCount, setCartCount] = useState("");
+  const [cartCount, setCartCount] = useState('');
   const [loading, setLoading] = useState(true);
-  const [cartTotal, setCartTotal] = useState("");
+  const [cartTotal, setCartTotal] = useState('');
   const [orderData, setOrderData] = useState([]);
 
-  const [isAdmin, setIsAdmin] = useState();
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isCustomer, setIsCustomer] = useState(true);
 
   const [points, setPoints] = useState(0);
@@ -47,16 +47,26 @@ function App() {
     };
 
     const { data: response } = await axios.post(
-      "http://localhost:8080/api/refreshToken",
+      'http://localhost:8080/api/refreshToken',
       user
     );
     console.log(response.error);
     if (response.error === false) {
       setStatus(true);
-      console.log("setted true");
+      console.log('setted true');
+
+      const { data: response } = await axios.get(
+        `http://localhost:8080/api/users/getId/${localStorage.getItem(
+          'username'
+        )}`
+      );
+      setIsAdmin(response.isAdmin);
+      setPoints(response.userPoints);
+      localStorage.setItem('isAdmin', response.isAdmin);
+      console.log(response);
     } else {
       setStatus(false);
-      console.log("setted false");
+      console.log('setted false');
     }
   };
 
@@ -64,50 +74,51 @@ function App() {
     checkLogin();
   }, []);
 
+  // const fetchRole = async () => {
+  //   if (status === true) {
+  //     try {
+  //       const { data: response } = await axios.get(
+  //         `http://localhost:8080/api/users/getId/${localStorage.getItem(
+  //           "username"
+  //         )}`
+  //       );
+  //       setIsAdmin(response.isAdmin);
+  //       setPoints(response.userPoints);
+  //       console.log(response);
+  //     } catch (error) {
+  //       console.error(error.message);
+  //     }
+  //   }
+  // };
 
+  // console.log(isAdmin);
 
-  const fetchRole = async () => {
-    if (status == true) {
-      try {
-        const { data: response } = await axios.get(
-          `http://localhost:8080/api/users/getId/${localStorage.getItem(
-            "username"
-          )}`
-        );
-        setIsAdmin(response.isAdmin);
-        setPoints(response.userPoints);
-        console.log(response);
-      } catch (error) {
-        console.error(error.message);
-      }
-    }
-  };
-
-  useEffect(() => {
-    fetchRole();
-  }, []);
+  // useEffect(() => {
+  //   fetchRole();
+  // }, []);
 
   const logOut = async () => {
-    await fetch("http://localhost:8080/api/refreshToken", {
-      method: "DELETE",
+    await fetch('http://localhost:8080/api/refreshToken', {
+      method: 'DELETE',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        refreshToken: localStorage.getItem("rfkey"),
+        refreshToken: localStorage.getItem('rfkey'),
       }),
     }).then((res) => {
       if (res.ok) {
-        localStorage.setItem("rfkey", "");
-        console.log("logged out successfully");
+        localStorage.setItem('rfkey', '');
+        localStorage.setItem('isAdmin', false);
+        console.log('logged out successfully');
         window.location.reload(false);
         setStatus(false);
         console.log(status);
       } else {
-        console.log("Cannot logout");
+        console.log('Cannot logout');
       }
     });
-    localStorage.removeItem("isLogged");
+    localStorage.removeItem('isLogged');
   };
 
   return (
@@ -121,7 +132,8 @@ function App() {
             isAdmin={isAdmin}
           />
           <Routes>
-            <Route path="/" element={<Home />} />
+          <Route path="/" element={isAdmin ? <TravelPlan/> : <Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/loyalty-reward" element={<LoyaltyDB />} />
             {/* <Route path="/travel-plan" element={<TravelPlan />} /> */}
             <Route path="/payment/:packageId" element={<Payment />} />
@@ -131,15 +143,20 @@ function App() {
             <Route path="/blogs" element={<Blog />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/inquiry" element={<Inquiry/>}/>
+            <Route path="/inquiry" element={<Inquiry />} />
 
-            <Route
+            {/* <Route
               path="/travel-plan"
               element={
-                <RoleProtected isAdmin={!isAdmin}>
+                <RoleProtected isAdmin={isAdmin}>
                   <TravelPlan />
                 </RoleProtected>
               }
+            /> */}
+
+            <Route
+              path="/travel-plan"
+              element={isAdmin ? <TravelPlan /> : <NotFound />}
             />
 
             <Route
@@ -154,7 +171,7 @@ function App() {
             <Route
               path="/admin-inquiry"
               element={
-                <RoleProtected isAdmin={!isAdmin}>
+                <RoleProtected isAdmin={isAdmin}>
                   <AdminInquiries />
                 </RoleProtected>
               }

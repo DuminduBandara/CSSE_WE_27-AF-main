@@ -18,7 +18,7 @@ const NavBar = ({ setStatus, status, logOut, isAdmin }) => {
   return (
     <Navbar style={{ height: '4rem' }} bg="light" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="/">
           {' '}
           <img className="navlogo" src={Logo} alt="logo" />{' '}
         </Navbar.Brand>
@@ -26,8 +26,17 @@ const NavBar = ({ setStatus, status, logOut, isAdmin }) => {
           className="justify-content-end flex-grow-1 pe-3"
           style={{ textAlign: 'right', display: 'flex' }}
         >
+          {isAdmin && (
+            <Link
+              to="/travel-plan"
+              style={{ padding: '10px', textDecoration: 'none', color: '#000' }}
+            >
+              Admin Dashboard
+            </Link>
+          )}
+
           <Link
-            to="/"
+            to="/home"
             style={{ padding: '10px', textDecoration: 'none', color: '#000' }}
           >
             Home

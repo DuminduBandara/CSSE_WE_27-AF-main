@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
 import Kandy from '../../images/maligawa.jpeg';
 import Kurunegala from '../../images/kurunegala.jpg';
 import Galle from '../../images/galle2.jpg';
@@ -37,14 +38,11 @@ export default function PlaceCard() {
         justifyContent: 'center',
         width: '100%',
         alignItems: 'center',
-        padding: '5rem'
+        padding: '5rem',
       }}
     >
-      <div
-        class="container text-center"
-        
-      >
-        <div
+      <div class="container">
+        {/* <div
           class="row row-cols-4 gap-7"
           style={{
             display: 'flex',
@@ -67,7 +65,27 @@ export default function PlaceCard() {
               </Card>
             </div>
           ))}
-        </div>
+        </div> */}
+
+        <Row xs={1} md={3} className="g-4">
+          {places.map((place, index) => (
+            <div key={index} class="col" style={{ minHeight: '500px' }}>
+              <Card style={{ width: '100%' }}>
+                <Card.Img variant="top" src={place.image} style={{ height: '250px' }} />
+                <Card.Body>
+                  <Card.Title>{place.placeName}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    {place.district} | {place.province}
+                  </Card.Subtitle>
+                  <Card.Text style={{ height: '200px' }}>
+                    {place.description}
+                  </Card.Text>
+                  <Button variant="primary">View</Button>
+                </Card.Body>
+              </Card>
+            </div>
+          ))}
+        </Row>
       </div>
     </div>
   );

@@ -3,9 +3,11 @@ import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Welcome from "../images/registerbanner.jpg";
+import { useNavigate } from "react-router-dom";
 const API_BASE = "http://localhost:8080";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -49,6 +51,7 @@ const Register = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate("/login")
       })
       .catch((error) => {
         Swal.fire({

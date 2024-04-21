@@ -11,8 +11,10 @@ import Places from '../../components/Admin/Places.jsx';
 import Donations from '../../components/Admin/Donations.jsx';
 import Footer from '../../components/Home/footer.jsx';
 import './travel-style.css';
+import { Navigate } from 'react-router-dom';
 
 export default function TravelPlan() {
+
   return (
     <div>
       <div className="background">
@@ -23,8 +25,8 @@ export default function TravelPlan() {
       </div>
       <div className="side-nav-container">
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-          <Row className="tab-board">
-            <Col>
+          <Row className="tab-board d-flex">
+            <Col style={{marginRight: '6rem'}}>
               <Nav variant="pills" className="flex-column">
                 <Nav.Item className="nav-item">
                   <Nav.Link

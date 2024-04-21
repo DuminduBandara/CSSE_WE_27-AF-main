@@ -30,6 +30,7 @@ export default function Blogform() {
       .post("http://localhost:8080/blog/add", formData)
       .then((res) => {
         setSuccessMessage("Blog added successfully!");
+        window.location.reload();
       })
       .catch((err) => console.log(err));
 

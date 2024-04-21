@@ -10,10 +10,13 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function Places() {
   const [province, setProvince] = React.useState('');
   const [district, setDistrict] = React.useState('');
+
+  const navigate = useNavigate();
 
   const handleProvinceChange = (event) => {
     setProvince(event.target.value);
@@ -56,6 +59,7 @@ export default function Places() {
       .then((res) => {
         console.log(formData);
         alert('Place added successfully...');
+        navigate('/home');
       })
       .catch((err) => {
         console.log(err);
