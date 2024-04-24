@@ -24,6 +24,7 @@ import AdminInquiries from './pages/package/AdminInquiries';
 import RoleProtected from './pages/RoleProtected';
 import NotFound from './pages/404';
 import CurrencyConvertor from './pages/CurrencyConvertor';
+import Weather from './pages/Weather';
 import StatusProtected from './pages/StatusProtected';
 
 function App() {
@@ -191,6 +192,7 @@ function App() {
               }
             />
             <Route path="/convertor" element={<CurrencyConvertor />} />
+            <Route path="/weather" element={<Weather />} />
 
             <Route
               path="/travel-plan"

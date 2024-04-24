@@ -27,6 +27,14 @@ const NavBar = ({ setStatus, status, logOut, isAdmin }) => {
           style={{ textAlign: 'right', display: 'flex' }}
         >
           <Link
+            to="/weather"
+            style={{ padding: '10px', textDecoration: 'none', marginRight: '2rem' }}
+            class="btn btn-outline-primary btn-sm"
+          >
+            Check Area Weather
+          </Link>
+
+          <Link
             to="/convertor"
             style={{ padding: '10px', textDecoration: 'none' }}
             class="btn btn-outline-success btn-sm"

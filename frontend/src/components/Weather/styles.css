@@ -1,0 +1,44 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.glassCard{
+  background:  rgba(225,225,225,0.18);
+  box-shadow:  0 8px 32px 0 rgba(31,38,135,0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  border: 1px solid rgba(225,225,225,0.18);
+}
+
+
+.weather-tips-box {
+  background-color: rgba(225, 225, 225, 0.18);
+  border: 1px solid rgba(225, 225, 225, 0.18);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 20px;
+  margin-top: 20px;
+  width: 600px;
+  
+}
+
+.weather-tips-box h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom : 10px;
+}
+
+.weather-tips-box ul {
+  list-style-type: none;
+}
+
+.weather-tips-box ul li {
+  margin-bottom: 5px;
+}
