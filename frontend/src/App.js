@@ -23,6 +23,8 @@ import UserInquiries from './pages/package/UserInquiries';
 import AdminInquiries from './pages/package/AdminInquiries';
 import RoleProtected from './pages/RoleProtected';
 import NotFound from './pages/404';
+import CurrencyConvertor from './pages/CurrencyConvertor';
+import StatusProtected from './pages/StatusProtected';
 
 function App() {
   const [status, setStatus] = useState(false);
@@ -121,6 +123,8 @@ function App() {
     localStorage.removeItem('isLogged');
   };
 
+  let logStatus = localStorage.getItem('isLogged');
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -132,55 +136,111 @@ function App() {
             isAdmin={isAdmin}
           />
           <Routes>
-          <Route path="/" element={isAdmin ? <TravelPlan/> : <Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/loyalty-reward" element={<LoyaltyDB />} />
-            {/* <Route path="/travel-plan" element={<TravelPlan />} /> */}
-            <Route path="/payment/:packageId" element={<Payment />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/profile" element={<MyProfile />} />
-            <Route path="/package/:id" element={<SinglePackage />} />
-            <Route path="/blogs" element={<Blog />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/inquiry" element={<Inquiry />} />
+            <Route path="/" element={isAdmin ? <TravelPlan /> : <Home />} />
 
-            {/* <Route
-              path="/travel-plan"
+            <Route path="/home" element={<Home />} />
+            <Route
+              path="/loyalty-reward"
               element={
-                <RoleProtected isAdmin={isAdmin}>
-                  <TravelPlan />
-                </RoleProtected>
+                <StatusProtected>
+                  <LoyaltyDB />
+                </StatusProtected>
               }
-            /> */}
+            />
+            <Route
+              path="/payment/:packageId"
+              element={
+                <StatusProtected>
+                  <Payment />
+                </StatusProtected>
+              }
+            />
+            <Route
+              path="/payment"
+              element={
+                <StatusProtected>
+                  <Payment />
+                </StatusProtected>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <StatusProtected>
+                  <MyProfile />
+                </StatusProtected>
+              }
+            />
+            <Route
+              path="/package/:id"
+              element={
+                <StatusProtected>
+                  <SinglePackage />
+                </StatusProtected>
+              }
+            />
+            <Route path="/blogs" element={<Blog />} />
+            <Route path="/register" element={!logStatus ? <Register /> : <Home/>} />
+            <Route path="/login" element={!logStatus ? <Login /> : <Home/>} />
+            <Route
+              path="/inquiry"
+              element={
+                <StatusProtected>
+                  <Inquiry />
+                </StatusProtected>
+              }
+            />
+            <Route path="/convertor" element={<CurrencyConvertor />} />
 
             <Route
               path="/travel-plan"
-              element={isAdmin ? <TravelPlan /> : <NotFound />}
+              element={
+                <StatusProtected>
+                  {isAdmin ? <TravelPlan /> : <NotFound />}
+                </StatusProtected>
+              }
             />
 
             <Route
               path="/user-inquiry"
               element={
-                <RoleProtected isAdmin={!isAdmin}>
-                  <UserInquiries />
-                </RoleProtected>
+                <StatusProtected>
+                  <RoleProtected isAdmin={!isAdmin}>
+                    <UserInquiries />
+                  </RoleProtected>
+                </StatusProtected>
               }
             />
 
             <Route
               path="/admin-inquiry"
               element={
-                <RoleProtected isAdmin={isAdmin}>
-                  <AdminInquiries />
-                </RoleProtected>
+                <StatusProtected>
+                  <RoleProtected isAdmin={isAdmin}>
+                    <AdminInquiries />
+                  </RoleProtected>
+                </StatusProtected>
               }
             />
 
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/travel-places" element={<TravelPlace />} />
-            <Route path="/new-places" element={<NewPlaces />} />
-            <Route path="/packages/:id" element={<Packages />} />
+            <Route
+              path="/new-places"
+              element={
+                <StatusProtected>
+                  <NewPlaces />
+                </StatusProtected>
+              }
+            />
+            <Route
+              path="/packages/:id"
+              element={
+                <StatusProtected>
+                  <Packages />
+                </StatusProtected>
+              }
+            />
           </Routes>
         </div>
       </BrowserRouter>

@@ -55,22 +55,27 @@ export default function BlogCard() {
               <footer className="blockquote-footer">
                 by {blog.bloggerName}
               </footer>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'end',
-                  gap: '1rem',
-                  width: '100%',
-                  alignItems: 'center',
-                }}
-              >
-                <Button variant="danger" onClick={() => handleDeleteShow(blog._id)}>
-                  Delete Blog
-                </Button>
-                <Button variant="primary" onClick={() => handleShow(blog)}>
-                  Update Blog
-                </Button>
-              </div>
+              {localStorage.getItem('isLogged') && (
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'end',
+                    gap: '1rem',
+                    width: '100%',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Button
+                    variant="danger"
+                    onClick={() => handleDeleteShow(blog._id)}
+                  >
+                    Delete Blog
+                  </Button>
+                  <Button variant="primary" onClick={() => handleShow(blog)}>
+                    Update Blog
+                  </Button>
+                </div>
+              )}
             </Card.Body>
           </Card>
         </div>
@@ -80,11 +85,7 @@ export default function BlogCard() {
         onHide={handleClose}
         selectedBlog={selectedBlog}
       />
-      <DeleteBlog
-        show={deleteShow}
-        onHide={handleClose}
-        blogId={blogId}
-      />
+      <DeleteBlog show={deleteShow} onHide={handleClose} blogId={blogId} />
     </div>
   );
 }

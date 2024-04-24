@@ -16,6 +16,7 @@ import Feedback from "./routes/Feedback/feedbacks.js";
 import PlaceRequests from "./routes/NewRequest/requests.js";
 import PlaceRoutes from "./routes/Places/Place-Route.js";
 import Payment from "./routes/Payment/Payment-route.js";
+import CurConvertor from "./routes/Convertor/convertor_router.js";
 
 const app = express();
 
@@ -53,6 +54,9 @@ app.use( "/requests", PlaceRequests )
 app.use( "/places", PlaceRoutes );
 
 app.use("/payment", Payment);
+
+app.use("/convertor", CurConvertor);
+
 
 const port = process.env.PORT || 8080;
 app.listen(port, ()=> console.log(`Listening on port ${port}...`));

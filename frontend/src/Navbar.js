@@ -26,6 +26,14 @@ const NavBar = ({ setStatus, status, logOut, isAdmin }) => {
           className="justify-content-end flex-grow-1 pe-3"
           style={{ textAlign: 'right', display: 'flex' }}
         >
+          <Link
+            to="/convertor"
+            style={{ padding: '10px', textDecoration: 'none' }}
+            class="btn btn-outline-success btn-sm"
+          >
+            Currency Convertor
+          </Link>
+
           {isAdmin && (
             <Link
               to="/travel-plan"
