@@ -1,23 +1,25 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 const SinglePackage = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [showPackage, setShowPackage] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const userId = "64569c01d4d5180affb57eb3";
   const [unlockedPackage, setUnlockedPackage] = useState(null);
   const [inquiryType, setInquiryType] = useState('');
   const [inquiryTitle, setInquiryTitle] = useState('');
   const [inquiryDescription, setInquiryDescription] = useState('');
 
+  const userId = localStorage.getItem("userID");
+
   useEffect(() => {
     const checkPayment = async () => {
       try {
-        const response = await axios.post('http://localhost:8080/api/package/check-fields', {
+        const response = await axios.post('http://localhost:8080/package/check-fields', {
           userid: userId,
           id: id
         });
@@ -92,17 +94,19 @@ const SinglePackage = () => {
   });
 
   return (
-    <div>
+    <div  style={{marginTop: '4rem'}}>
       {showPackage ? (
         <div className="package-details">
-          <h2>Package {unlockedPackage.package_no}</h2>
+          <h4>Package: {unlockedPackage.package_no}</h4>
+          <h5>Package Description:</h5>
           <p>{unlockedPackage.description}</p>
+          <h5>Package Details:</h5>
           <p>{unlockedPackage.details}</p>
           <p>Price: ${unlockedPackage.price}</p>
           <button
             type="button"
             className="btn btn-dark"
-            style={{ width: '200px' }}
+            style={{ width: '250px' }}
             onClick={handleFormButtonClick}
           >
             Not Satisfied (Make Inquiry)
@@ -179,15 +183,14 @@ const SinglePackage = () => {
       <h1 className="mt-5">
         You don't have access to view this package unless you purchase it
       </h1>
-      <a href="/payment">
         <button
           type="submit"
           className="btn btn-dark mt-3"
           style={{ width: '200px' }}
+          onClick={()=> navigate(`/payment?pak=${id}`)}
         >
           Pay
         </button>
-      </a>
       {showForm && (
         <form className="mt-4">
           {/* Render your form components here */}

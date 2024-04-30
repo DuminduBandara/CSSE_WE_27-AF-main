@@ -7,7 +7,8 @@ import ProfileBanner from '../../images/profile.jpg';
 
 const MyProfile = () => {
   const [packages, setPackages] = useState([]);
-  const userId = localStorage.getItem("username");
+  const [user, setUser] = useState([]);
+  const userId = localStorage.getItem('userID');
   const fetchPackages = () => {
     axios
       .get(`http://localhost:8080/package/${userId}`)
@@ -23,18 +24,38 @@ const MyProfile = () => {
       });
   };
 
+  const fetchUser = () => {
+    axios
+      .get(`http://localhost:8080/api/users/${userId}`)
+      .then((response) => {
+        // Handle the received data here
+        const userData = response.data;
+        setUser(userData);
+      })
+      .catch((error) => {
+        // Handle the error here
+        console.error(error);
+      });
+  };
+
   useEffect(() => {
+    fetchUser();
     fetchPackages();
   }, []);
 
   return (
     <div>
       <BannerComponent heading="Profile" banner={ProfileBanner} />
+      <div style={{padding: '2rem'}}>
+        <h2>User Details</h2>
+        <h4>Username: {user.userName}</h4>
+        <h4>User Email: {user.email}</h4>
+      </div>
       {packages.length > 0 ? (
         <div>
-          <h1 className="text-center display-4 my-4">
+          <h2 style={{padding: '2rem'}}>
             Admin has sent you these packages
-          </h1>
+          </h2>
 
           <div className="package-grid">
             {packages.map((item) => (

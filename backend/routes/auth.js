@@ -54,6 +54,7 @@ router.post("/getUser", async (req, res) => {
             res.status(200).json({
                 error: false,
                 username: user.userName,
+                userID: user._id,
                 messaage: "User is there",
             });
         } 

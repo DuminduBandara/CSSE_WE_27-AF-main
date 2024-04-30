@@ -109,7 +109,7 @@ export default class Requests_Admin extends Component {
                   <td>{props.userid}</td>
                   <td>{props.province}</td>
                   <td>{props.districts}</td>
-                  <td>{props.date}</td>
+                  <td>{new Date(props.date).toLocaleDateString()}</td>
                   <td className="tbody">{props.days}</td>
                   <td className="tbody">
                     <Link to={'/packages/' + props._id}>

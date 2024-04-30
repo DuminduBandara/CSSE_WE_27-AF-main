@@ -67,7 +67,9 @@ const Login = () => {
       })
       .then((data) => {
         localStorage.setItem("username", data.username);
+        localStorage.setItem("userID", data.userID);
         console.log(data.username);
+        console.log(data.userID);
       });
   };
 

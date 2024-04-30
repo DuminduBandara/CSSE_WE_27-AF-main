@@ -1,67 +1,85 @@
-import { Router } from "express";
-import Package from "../models/Package.js";
+import { Router } from 'express';
+import Package from '../models/Package.js';
 
 const router = Router();
 
-router.post("/add", async (req, res) => {
-    const { requestid, userid, package_no, price, description, details, isPurchased} = req.body;
-    
-    try {
-      
-      const item = new Package();
-      item.requestid = requestid;
-      item.userid = userid;
-      item.package_no = package_no;
-      item.price = price;
-      item.description = description;
-      item.details = details;
-      item.isPurchased = isPurchased;
-  
-      await item.save();
-  
-      res.json({ msg: "Package added successfully..." });
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send("Server Error");
-    }
-  });
+router.post('/add', async (req, res) => {
+  const {
+    requestid,
+    userid,
+    package_no,
+    price,
+    description,
+    details,
+    isPurchased,
+  } = req.body;
 
-  router.get("/", async (req, res) => {
-    try {
-      const packages = await Package.find(); 
-      res.json(packages);
-    } catch (error) {
-      res.status(500).json({ error: "Server error" });
-    }
-  });
-
-  router.get("/:userId", async (req, res) => {
-    try {
-      const userId = req.params.userId;
-      const packages = await Package.find({ userid: userId });
-  
-      res.json(packages);
-    } catch (error) {
-      res.status(500).json({ error: "Server error" });
-    }
-  });
-
-router.post("/check-fields", async (req, res) => {
   try {
-    const { userid, id } = req.body;
-    const record = await Package.findOne({ userid:userid, _id:id });
+    const item = new Package();
+    item.requestid = requestid;
+    item.userid = userid;
+    item.package_no = package_no;
+    item.price = price;
+    item.description = description;
+    item.details = details;
+    item.isPurchased = isPurchased;
 
-    if (record) {
-      res.json({ message: "Record exists.", status: true, data: record });
-    } else {
-      res.json({ message: "Record does not exist.", status: false });
-    }
-  } catch (error) {
-    res.status(500).json({ error: "Server error" });
+    await item.save();
+
+    res.json({ msg: 'Package added successfully...' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
 });
 
-router.put("/packages/:packageId", async (req, res) => {
+router.get('/', async (req, res) => {
+  try {
+    const packages = await Package.find();
+    res.json(packages);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+router.get('/:userId', async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const packages = await Package.find({ userid: userId });
+
+    res.json(packages);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+router.get('/package/:packId', async (req, res) => {
+  try {
+    const packId = req.params.packId;
+    const packages = await Package.findById(packId);
+
+    res.json(packages);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+router.post('/check-fields', async (req, res) => {
+  try {
+    const { userid, id } = req.body;
+    const record = await Package.findOne({ userid: userid, _id: id });
+
+    if (record) {
+      res.json({ message: 'Record exists.', status: true, data: record });
+    } else {
+      res.json({ message: 'Record does not exist.', status: false });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+router.put('/packages/:packageId', async (req, res) => {
   const packageId = req.params.packageId;
 
   try {
@@ -69,7 +87,7 @@ router.put("/packages/:packageId", async (req, res) => {
     const singlePackage = await Package.findById(packageId);
 
     if (!singlePackage) {
-      return res.status(404).json({ error: "Package not found" });
+      return res.status(404).json({ error: 'Package not found' });
     }
 
     // Update the isPurchased field to true
@@ -80,7 +98,7 @@ router.put("/packages/:packageId", async (req, res) => {
 
     return res.json(singlePackage);
   } catch (error) {
-    return res.status(500).json({ error: "Internal server error" });
+    return res.status(500).json({ error: 'Internal server error' });
   }
 });
 

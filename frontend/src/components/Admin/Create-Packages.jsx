@@ -26,6 +26,7 @@ const Packages = () => {
       ...formData,
       requestid: request._id,
       userid: request.userid,
+      isPurchased: false
     };
 
     console.log(data);
