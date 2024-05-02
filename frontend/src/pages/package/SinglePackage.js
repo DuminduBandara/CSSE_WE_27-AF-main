@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import jsPDF from 'jspdf';
+import Logo from '../../images/LOGO.png';
+import html2canvas from 'html2canvas';
+import autoTable from 'jspdf-autotable';
 
 const SinglePackage = () => {
   const navigate = useNavigate();
@@ -14,15 +18,18 @@ const SinglePackage = () => {
   const [inquiryTitle, setInquiryTitle] = useState('');
   const [inquiryDescription, setInquiryDescription] = useState('');
 
-  const userId = localStorage.getItem("userID");
+  const userId = localStorage.getItem('userID');
 
   useEffect(() => {
     const checkPayment = async () => {
       try {
-        const response = await axios.post('http://localhost:8080/package/check-fields', {
-          userid: userId,
-          id: id
-        });
+        const response = await axios.post(
+          'http://localhost:8080/package/check-fields',
+          {
+            userid: userId,
+            id: id,
+          }
+        );
         const { data } = response.data;
 
         if (data && data.isPurchased) {
@@ -38,6 +45,7 @@ const SinglePackage = () => {
 
     checkPayment();
   }, [id]);
+
 
   const handleFormButtonClick = () => {
     setShowForm(true);
@@ -64,7 +72,10 @@ const SinglePackage = () => {
       inquiryDescription: values.inquiryDescription,
     };
     try {
-      const response = await axios.post('http://localhost:8080/api/inquiry/inquiries', inquiryData);
+      const response = await axios.post(
+        'http://localhost:8080/api/inquiry/inquiries',
+        inquiryData
+      );
       resetForm();
       setShowForm(false);
       return response.data;
@@ -94,7 +105,7 @@ const SinglePackage = () => {
   });
 
   return (
-    <div  style={{marginTop: '4rem'}}>
+    <div style={{ marginTop: '4rem' }}>
       {showPackage ? (
         <div className="package-details">
           <h4>Package: {unlockedPackage.package_no}</h4>
@@ -113,92 +124,99 @@ const SinglePackage = () => {
           </button>
           {showForm && (
             <form className="form-control my-4" onSubmit={formik.handleSubmit}>
-            <div className="form-group">
-            <label htmlFor="inquiryType">Inquiry Type:</label>
-            <select
-                           className="form-control"
-                           id="inquiryType"
-                           name="inquiryType"
-                           value={formik.values.inquiryType}
-                           onChange={formik.handleChange}
-                           onBlur={formik.handleBlur}
-                         >
-            <option value="">Select an inquiry type</option>
-            <option value="General">General Inquiry</option>
-            <option value="Technical">Technical Inquiry</option>
-            <option value="Billing">Billing Inquiry</option>
-            </select>
-            {formik.touched.inquiryType && formik.errors.inquiryType && (
-            <div className="error">{formik.errors.inquiryType}</div>
-            )}
-            </div>
-            <div className="form-group">
-            <label htmlFor="heading">Package Id:</label>
-            <input
-                           className="form-control"
-                           type="text"
-                           id="heading"
-                           name="heading"
-                           value={id}
-                           disabled
-                         />
-            </div>
-            <div className="form-group">
-            <label htmlFor="heading">Heading:</label>
-            <input
-                           className="form-control"
-                           type="text"
-                           id="heading"
-                           name="inquiryTitle"
-                           value={formik.values.inquiryTitle}
-                           onChange={formik.handleChange}
-                           onBlur={formik.handleBlur}
-                         />
-            {formik.touched.inquiryTitle && formik.errors.inquiryTitle && (
-            <div className="error">{formik.errors.inquiryTitle}</div>
-            )}
-            </div>
-            <div className="form-group">
-            <label htmlFor="message">Message:</label>
-            <textarea
-                           className="form-control"
-                           id="message"
-                           name="inquiryDescription"
-                           value={formik.values.inquiryDescription}
-                           onChange={formik.handleChange}
-                           onBlur={formik.handleBlur}
-                         />
-            {formik.touched.inquiryDescription && formik.errors.inquiryDescription && (
-            <div className="error">{formik.errors.inquiryDescription}</div>
-            )}
-            </div>
-            <button className="btn btn-dark" type="submit" disabled={formik.isSubmitting}>
-            Submit Inquiry
+              <div className="form-group">
+                <label htmlFor="inquiryType">Inquiry Type:</label>
+                <select
+                  className="form-control"
+                  id="inquiryType"
+                  name="inquiryType"
+                  value={formik.values.inquiryType}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                >
+                  <option value="">Select an inquiry type</option>
+                  <option value="General">General Inquiry</option>
+                  <option value="Technical">Technical Inquiry</option>
+                  <option value="Billing">Billing Inquiry</option>
+                </select>
+                {formik.touched.inquiryType && formik.errors.inquiryType && (
+                  <div className="error">{formik.errors.inquiryType}</div>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="heading">Package Id:</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  id="heading"
+                  name="heading"
+                  value={id}
+                  disabled
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="heading">Heading:</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  id="heading"
+                  name="inquiryTitle"
+                  value={formik.values.inquiryTitle}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.touched.inquiryTitle && formik.errors.inquiryTitle && (
+                  <div className="error">{formik.errors.inquiryTitle}</div>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="message">Message:</label>
+                <textarea
+                  className="form-control"
+                  id="message"
+                  name="inquiryDescription"
+                  value={formik.values.inquiryDescription}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.touched.inquiryDescription &&
+                  formik.errors.inquiryDescription && (
+                    <div className="error">
+                      {formik.errors.inquiryDescription}
+                    </div>
+                  )}
+              </div>
+              <button
+                className="btn btn-dark"
+                type="submit"
+                disabled={formik.isSubmitting}
+              >
+                Submit Inquiry
+              </button>
+            </form>
+          )}
+        </div>
+      ) : (
+        <div className="text-center">
+          <h1 className="mt-5">
+            You don't have access to view this package unless you purchase it
+          </h1>
+          <button
+            type="submit"
+            className="btn btn-dark mt-3"
+            style={{ width: '200px' }}
+            onClick={() => navigate(`/payment?pak=${id}`)}
+          >
+            Pay
           </button>
-        </form>
+          {showForm && (
+            <form className="mt-4">
+              {/* Render your form components here */}
+            </form>
+          )}
+        </div>
       )}
     </div>
-  ) : (
-    <div className="text-center">
-      <h1 className="mt-5">
-        You don't have access to view this package unless you purchase it
-      </h1>
-        <button
-          type="submit"
-          className="btn btn-dark mt-3"
-          style={{ width: '200px' }}
-          onClick={()=> navigate(`/payment?pak=${id}`)}
-        >
-          Pay
-        </button>
-      {showForm && (
-        <form className="mt-4">
-          {/* Render your form components here */}
-        </form>
-      )}
-    </div>
-  )}
-</div>
-);
+  );
 };
 export default SinglePackage;

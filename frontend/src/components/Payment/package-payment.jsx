@@ -8,13 +8,14 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import './payment-style.css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const Payment = ({packageId}) => {
+const Payment = ({ packageId }) => {
   //get user details
   const [userDetails, setUserDetails] = useState({});
   const uid = localStorage.getItem('username');
+  const navigate = useNavigate();
 
   const loadUserData = async () => {
     axios({
@@ -60,7 +61,9 @@ const Payment = ({packageId}) => {
         console.log(res);
         Swal.fire('Done!', 'Payment done successfully...', 'success').then(
           () => {
-            window.location.href = '/profile';
+            navigate(`/paymentSummary/${packageId}`);
+            // window.location.href = `/paymentSummary/${packageId}`;
+            
           }
         );
       })
@@ -69,13 +72,14 @@ const Payment = ({packageId}) => {
         Swal.fire('Oops!', 'Payment Unsuccessful...', 'error');
       });
 
-      axios
+    axios
       .put(`http://localhost:8080/package/packages/${packageId}`)
       .then((res) => {
         console.log(res);
         Swal.fire('Done!', 'Payment done successfully...', 'success').then(
           () => {
-            window.location.href = '/profile';
+            // window.location.href = `/paymentSummary/${packageId}`;
+            navigate(`/paymentSummary/${packageId}`);
           }
         );
       })

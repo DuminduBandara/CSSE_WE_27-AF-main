@@ -26,6 +26,7 @@ import NotFound from './pages/404';
 import CurrencyConvertor from './pages/CurrencyConvertor';
 import Weather from './pages/Weather';
 import StatusProtected from './pages/StatusProtected';
+import PaymentSummary from './components/Payment/PaymentSummary';
 
 function App() {
   const [status, setStatus] = useState(false);
@@ -153,6 +154,14 @@ function App() {
               element={
                 <StatusProtected>
                   <Payment />
+                </StatusProtected>
+              }
+            />
+            <Route
+              path="/paymentSummary/:packageId"
+              element={
+                <StatusProtected>
+                  <PaymentSummary/>
                 </StatusProtected>
               }
             />
