@@ -8,6 +8,7 @@ import "./styles.css";
 
 export default function Blogform() {
   const [formData, setFormData] = useState({
+    userId: localStorage.getItem('userID'),
     blogName: "",
     blogPlaces: "",
     bloggerName: "",

@@ -6,9 +6,7 @@ import Tab from 'react-bootstrap/Tab';
 import Inquaries from '../../components/Admin/Inquaries.jsx';
 import Packages from '../../components/Admin/Packages.jsx';
 import Requests from '../../components/Admin/Requests.jsx';
-import Vouchers from '../../components/Admin/Vouchers.jsx';
 import Places from '../../components/Admin/Places.jsx';
-import Donations from '../../components/Admin/Donations.jsx';
 import Footer from '../../components/Home/footer.jsx';
 import './travel-style.css';
 import { Navigate } from 'react-router-dom';
@@ -141,16 +139,6 @@ export default function TravelPlan() {
                   <Inquaries />
                 </Tab.Pane>
                 <Tab.Pane
-                  eventKey="fourth"
-                  style={{
-                    fontWeight: '100',
-                    fontFamily: 'Lucida Sans',
-                    fontSize: '15px',
-                  }}
-                >
-                  <Vouchers />
-                </Tab.Pane>
-                <Tab.Pane
                   eventKey="fifth"
                   style={{
                     fontWeight: '100',
@@ -159,16 +147,6 @@ export default function TravelPlan() {
                   }}
                 >
                   <Places />
-                </Tab.Pane>
-                <Tab.Pane
-                  eventKey="sixth"
-                  style={{
-                    fontWeight: '100',
-                    fontFamily: 'Lucida Sans',
-                    fontSize: '15px',
-                  }}
-                >
-                  <Donations />
                 </Tab.Pane>
               </Tab.Content>
             </Col>

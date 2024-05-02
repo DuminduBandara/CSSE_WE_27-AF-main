@@ -55,7 +55,7 @@ export default function BlogCard() {
               <footer className="blockquote-footer">
                 by {blog.bloggerName}
               </footer>
-              {localStorage.getItem('isLogged') && (
+              {localStorage.getItem('isLogged') && (localStorage.getItem('userID') === blog.userId) && (
                 <div
                   style={{
                     display: 'flex',

@@ -6,10 +6,11 @@ const router = Router();
 
 router.post('/add', async (req, res) => {
   try {
-    const { blogName, blogPlaces, bloggerName, blogContent } = req.body;
+    const {userId, blogName, blogPlaces, bloggerName, blogContent } = req.body;
 
     // Create a new blog
     const newBlog = new Blog({
+      userId,
       blogName,
       blogPlaces,
       bloggerName,
